@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>События</title>
+    <script src="../lib/jquery.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            /**
+             $("button").on("click", function () {
+                var $this = $(this);
+            });
+             */
+
+            function toggle(obj) {
+                obj
+                    .siblings("button")
+                        .removeAttr("disabled")
+                    .end()
+                        .attr("disabled", "disabled");
+            }
+
+            $("#hide").on("click", function () {
+                $("#box").hide();
+                toggle($(this));
+                //$(this).attr("disabled", "disabled");
+                //$(this).siblings("button").removeAttr("disabled");
+            });
+
+            $("#show").on("click", function () {
+                $("#box").show();
+                toggle($(this));
+                //$(this).attr("disabled", "disabled");
+                //$(this).siblings("button").removeAttr("disabled");
+            });
+
+            /*
+            $("#toggle").on("click", function(){
+
+                if($("#box").is(":visible")){
+                    $("#box").hide();
+                    $(this).text("Показать");
+                }else{
+                    $("#box").show();
+                    $(this).text("Скрыть");
+                }
+
+            });
+            */
+
+            $("#toggle").on("click", function() {
+                $("#box").toggle();
+            });
+            $("#box").on("click", function() {
+                $("#toggle").off("click");
+            });
+
+            });
+    </script>
+    <style>
+        div#box {
+            width: 50%;
+            margin: auto;
+            border: 3px dotted green;
+            text-align: center;
+        }
+
+        div#buttons {
+            width: 50%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="buttons">
+    <button id="toggle">Переключить</button>
+    <!--<button id="hide">Hide</button>-->
+    <!--<button id="show">Show</button>-->
+    <div>
+        <div id="box">
+            <h1>Привет всем!</h1>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,2 +1,2 @@
 # Jquery
-labs and demos
+Лабораторные и примеры
